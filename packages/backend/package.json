@@ -1,5 +1,5 @@
 {
-  "name": "learn_nestjs",
+  "name": "learn_nestjs-angular-fullstack_backend",
   "private": true,
   "scripts": {
     "prebuild": "rimraf dist",
