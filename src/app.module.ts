@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Cars } from './cars/entities/car.entity';
+import { Car } from './cars/entities/car.entity';
 import { CarsModule } from './cars/cars.module';
 
 @Module({
@@ -16,7 +16,7 @@ import { CarsModule } from './cars/cars.module';
       username: 'postgres',
       password: 'guest123',
       database: 'transportation',
-      entities: [Cars],
+      entities: [Car],
       synchronize: true,
     }),
   ],

@@ -7,9 +7,11 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { CarsService } from './cars.service';
+
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
+import { Car } from './entities/car.entity';
+import { CarsService } from './cars.service';
 
 @Controller('cars')
 export class CarsController {
@@ -21,12 +23,8 @@ export class CarsController {
   }
 
   @Get()
-  async findAll() {
-    return [
-      { make: 'honda', model: 'accord' },
-      { make: 'subaru', model: 'outback' },
-      { make: 'fiat', model: '123 spider' },
-    ];
+  async findAll(): Promise<Car[]> {
+    return this.carsService.findAll();
   }
 
   @Get(':id')
