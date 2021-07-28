@@ -6,7 +6,7 @@ import { TFlight } from './flight.model';
   providedIn: 'root',
 })
 export class FlightsService {
-  flights: TFlight[] = [
+  private flights: TFlight[] = [
     {
       origin: 'Miami',
       destination: 'Chicago',

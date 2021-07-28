@@ -1,16 +1,11 @@
 <div class="root">
   <header class="header root__header">
+    <img src="../assets/logo-horizontal.jpg" alt="TSFlight logo" width="160">
+
     <nav class="navigation">
-      <ul class="navigation__list">
-        <li *ngFor="let link of navLinks">
-          <a
-            class="navigation__link"
-            routerLink="{{ link.path }}"
-          >
-            {{ link.label }}
-          </a>
-        </li>
-      </ul>
+      <a *ngFor="let link of navLinks" class="navigation__link" routerLink="{{ link.path }}">
+        {{ link.label }}
+      </a>
     </nav>
   </header>
 

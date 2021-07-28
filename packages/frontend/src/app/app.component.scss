@@ -19,35 +19,51 @@
 }
 
 .header {
-  border-bottom: 1px solid black;
+  display: grid;
   padding: 1rem;
+  background-color: white;
+
+  @media (max-width: 575px) {
+    justify-items: center;
+    row-gap: 1rem;
+  }
+
+  @media (min-width: 576px) {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .navigation {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 1.5rem;
   font-size: 1.25rem;
 
-  &__list {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style-type: none;
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: start;
-    column-gap: 1.5rem;
-  }
-
   &__link {
-    color: darkblue;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+    color: white;
+    background-color: #415d65;
 
-    &:nover {
-      color: blue;
+    @media (max-width: 575px) {
+      min-width: 7rem;
     }
   }
 }
 
+.content {
+  background-color: #4e7db5;
+  background-image: url('../assets/mountains.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .footer {
-  border-top: 1px solid black;
   padding: 1rem;
   font-size: 1.25rem;
+  background-color: white;
 }
