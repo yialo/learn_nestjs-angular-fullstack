@@ -1,10 +1,41 @@
 <div class="flights">
-  <ul class="flights__list">
-    <li *ngFor="let flight of getFlights()" class="flight flights__item">
-      <div class="flight__number">{{ flight.flightNumber }}</div>
-      <div class="flight__depart">{{ flight.depart | date }}</div>
-      <div class="flight__arrive">{{ flight.arrive | date }}</div>
-      <div class="flight__nonstop">{{ flight.nonstop }}</div>
-    </li>
-  </ul>
+  <form class="form flights__form">
+    <select class="form__field">
+      <option value="" disabled hidden selected>from</option>
+      <option value="nyc">New York</option>
+      <option value="london">London</option>
+      <option value="lax">Los Angeles</option>
+    </select>
+
+    <select class="form__field">
+      <option value="" disabled hidden selected>to</option>
+      <option value="nyc">New York</option>
+      <option value="london">London</option>
+      <option value="lax">Los Angeles</option>
+    </select>
+
+    <button class="form__button" type="submit">Go</button>
+  </form>
+
+  <div class="flights__scroll-box">
+    <div class="flights__grid" role="table">
+      <div class="flight flight_header" role="row">
+        <div role="columnheader">Flight #</div>
+        <div role="columnheader">Departs</div>
+        <div role="columnheader">Arrives</div>
+        <div role="columnheader">Nonstop</div>
+      </div>
+
+      <div *ngFor="let flight of getFlights()" class="flight" role="row">
+        <div role="gridcell">{{ flight.flightNumber }}</div>
+        <div role="gridcell">
+          {{ flight.depart | date:'shortDate' }}
+        </div>
+        <div role="gridcell">
+          {{ flight.arrive | date:'shortDate' }}
+        </div>
+        <div role="gridcell">{{ flight.nonstop }}</div>
+      </div>
+    </div>
+  </div>
 </div>
