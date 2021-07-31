@@ -1,38 +1,44 @@
 <div class="flights">
-  <form #form="ngForm" class="form flights__form" (ngSubmit)="query(form)" novalidate>
-    <select class="form__field" ngModel name="origin">
-      <option value="" disabled hidden selected>from</option>
-      <option *ngFor="let city of cities">{{ city }}</option>
-    </select>
+  <div class="flights__wrapper">
+    <h1 class="flights__heading">Find flight</h1>
 
-    <select class="form__field" ngModel name="destination">
-      <option value="" disabled hidden selected>to</option>
-      <option *ngFor="let city of cities">{{ city }}</option>
-    </select>
+    <div class="flights__inner">
+      <form #form="ngForm" class="form flights__form" (ngSubmit)="query(form)" novalidate>
+        <select class="form__field" ngModel name="origin">
+          <option value="" disabled hidden selected>from</option>
+          <option *ngFor="let city of cities">{{ city }}</option>
+        </select>
 
-    <button class="form__button" type="submit">
-      Go
-    </button>
-  </form>
+        <select class="form__field" ngModel name="destination">
+          <option value="" disabled hidden selected>to</option>
+          <option *ngFor="let city of cities">{{ city }}</option>
+        </select>
 
-  <div class="flights__scroll-box">
-    <div class="flights__grid" role="table">
-      <div class="flight flight_header" role="row">
-        <div role="columnheader">Flight #</div>
-        <div role="columnheader">Departs</div>
-        <div role="columnheader">Arrives</div>
-        <div role="columnheader">Nonstop</div>
-      </div>
+        <button class="form__button" type="submit">
+          Go
+        </button>
+      </form>
 
-      <div *ngFor="let flight of flights" class="flight" role="row">
-        <div role="gridcell">{{ flight.flight_number }}</div>
-        <div role="gridcell">
-          {{ flight.depart | date:'shortDate' }}
+      <div class="flights__scroll-box">
+        <div class="flights__grid" role="table">
+          <div class="flight flight_header" role="row">
+            <div role="columnheader">Flight #</div>
+            <div role="columnheader">Departs</div>
+            <div role="columnheader">Arrives</div>
+            <div role="columnheader">Nonstop</div>
+          </div>
+
+          <div *ngFor="let flight of flights" class="flight" role="row">
+            <div role="gridcell">{{ flight.flight_number }}</div>
+            <div role="gridcell">
+              {{ flight.depart | date:'shortDate' }}
+            </div>
+            <div role="gridcell">
+              {{ flight.arrive | date:'shortDate' }}
+            </div>
+            <div role="gridcell">{{ flight.nonstop }}</div>
+          </div>
         </div>
-        <div role="gridcell">
-          {{ flight.arrive | date:'shortDate' }}
-        </div>
-        <div role="gridcell">{{ flight.nonstop }}</div>
       </div>
     </div>
   </div>

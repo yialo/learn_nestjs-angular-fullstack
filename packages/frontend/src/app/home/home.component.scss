@@ -1,6 +1,23 @@
 .flights {
   padding: 1rem;
 
+  &__wrapper {
+    background-color: rgba(white, 0.5);
+  }
+
+  &__heading {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 1rem;
+    font-weight: 400;
+    font-size: 1.25rem;
+    background-color: white;
+  }
+
+  &__inner {
+    padding: 1rem;
+  }
+
   &__form {
     padding-bottom: 1rem;
   }
@@ -9,19 +26,12 @@
     display: flex;
     overflow: auto;
     background-color: white;
-
-    &::after {
-      content: '';
-      display: block;
-      width: 0.5rem;
-    }
   }
 
   &__grid {
     flex-grow: 1;
     display: grid;
     padding: 0.5rem;
-    padding-right: 0;
 
     @media (max-width: 575px) {
       row-gap: 0.5rem;
@@ -39,9 +49,9 @@
   &__field {
     min-width: 0;
     border-style: none;
-    border-radius: 0.25rem;
     padding: 0.25rem;
     font-size: 1.25rem;
+    box-shadow: 0 2px 4px rgba(black, 0.5);
 
     &:last-of-type {
       margin-left: 1rem;
@@ -51,10 +61,10 @@
   &__button {
     margin-left: 1rem;
     border-style: none;
-    border-radius: 0.25rem;
     padding: 0.25rem;
     font-size: 1.25rem;
     background-color: white;
+    box-shadow: 0 2px 4px rgba(black, 0.5);
     cursor: pointer;
 
     &:hover {
