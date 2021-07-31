@@ -1,32 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { TFlight } from './flight.model';
+
+const API_ROOT = 'http://localhost:3200';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlightsService {
-  private flights: TFlight[] = [
-    {
-      origin: 'Miami',
-      destination: 'Chicago',
-      flightNumber: 345,
-      depart: '2020-02-25T23:18:21.932Z',
-      arrive: '2020-02-25T23:21:21.932Z',
-      nonstop: true,
-    },
-    {
-      origin: 'New York',
-      destination: 'Los Angeles',
-      flightNumber: 432,
-      depart: '2020-05-25T23:18:00.932Z',
-      arrive: '2020-05-25T23:23:21.932Z',
-      nonstop: false,
-    },
-  ];
+  constructor(private http: HttpClient) {}
 
-  getFlights() {
-    return this.flights;
+  getFlights(): Observable<any> {
+    return this.http.get(`${API_ROOT}/flights/`);
   }
 
   postFlight(flight: TFlight) {}

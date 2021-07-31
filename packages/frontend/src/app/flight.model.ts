@@ -1,7 +1,7 @@
 export type TFlight = {
   origin: string;
   destination: string;
-  flightNumber: number;
+  flight_number: number;
   depart: string;
   arrive: string;
   nonstop: boolean;

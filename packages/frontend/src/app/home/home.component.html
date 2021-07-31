@@ -26,8 +26,8 @@
         <div role="columnheader">Nonstop</div>
       </div>
 
-      <div *ngFor="let flight of getFlights()" class="flight" role="row">
-        <div role="gridcell">{{ flight.flightNumber }}</div>
+      <div *ngFor="let flight of flights" class="flight" role="row">
+        <div role="gridcell">{{ flight.flight_number }}</div>
         <div role="gridcell">
           {{ flight.depart | date:'shortDate' }}
         </div>
