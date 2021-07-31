@@ -56,6 +56,14 @@
     font-size: 1.25rem;
     background-color: white;
     cursor: pointer;
+
+    &:hover {
+      background-color: lightblue;
+    }
+
+    &:active {
+      background-color: lightgrey;
+    }
   }
 }
 

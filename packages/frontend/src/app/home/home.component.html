@@ -1,20 +1,18 @@
 <div class="flights">
-  <form class="form flights__form">
-    <select class="form__field">
+  <form #form="ngForm" class="form flights__form" (ngSubmit)="query(form)" novalidate>
+    <select class="form__field" ngModel name="origin">
       <option value="" disabled hidden selected>from</option>
-      <option value="nyc">New York</option>
-      <option value="london">London</option>
-      <option value="lax">Los Angeles</option>
+      <option *ngFor="let city of cities">{{ city }}</option>
     </select>
 
-    <select class="form__field">
+    <select class="form__field" ngModel name="destination">
       <option value="" disabled hidden selected>to</option>
-      <option value="nyc">New York</option>
-      <option value="london">London</option>
-      <option value="lax">Los Angeles</option>
+      <option *ngFor="let city of cities">{{ city }}</option>
     </select>
 
-    <button class="form__button" type="submit">Go</button>
+    <button class="form__button" type="submit">
+      Go
+    </button>
   </form>
 
   <div class="flights__scroll-box">
