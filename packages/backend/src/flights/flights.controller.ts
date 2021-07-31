@@ -1,4 +1,12 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 
 import { Flight } from './entities/flight.entity';
 import { FlightsService } from './flights.service';
@@ -7,21 +15,34 @@ import { FlightsService } from './flights.service';
 export class FlightsController {
   constructor(private readonly flightsService: FlightsService) {}
 
+  @Post()
+  create(@Body() flight: Flight) {
+    return this.flightsService.create(flight);
+  }
+
   @Get()
-  findAll(): Promise<Flight[]> {
+  findAll() {
     return this.flightsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Flight> {
+  findOne(@Param('id') id: string) {
     return this.flightsService.findOne(+id);
   }
 
+  @Patch(':id/update')
+  update(@Param('id') id: number, @Body() flight: Flight) {
+    flight.id = id;
+    return this.flightsService.update(flight);
+  }
+
+  @Delete(':id/delete')
+  delete(@Param('id') id: number) {
+    return this.flightsService.delete(id);
+  }
+
   @Get('query/:orig/:dest')
-  query(
-    @Param('orig') origin: string,
-    @Param('dest') destination: string,
-  ): Promise<Flight[]> {
+  query(@Param('orig') origin: string, @Param('dest') destination: string) {
     return this.flightsService.query(origin, destination);
   }
 }
