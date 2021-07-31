@@ -13,6 +13,7 @@ export class FlightsService {
   constructor(private http: HttpClient) {}
 
   getFlights(): Observable<any> {
+    // return this.http.get(`${API_ROOT}/flights/query/Jackson/Chicago`);
     return this.http.get(`${API_ROOT}/flights/`);
   }
 

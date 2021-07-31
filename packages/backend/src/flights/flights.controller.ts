@@ -16,4 +16,12 @@ export class FlightsController {
   findOne(@Param('id') id: string): Promise<Flight> {
     return this.flightsService.findOne(+id);
   }
+
+  @Get('query/:orig/:dest')
+  query(
+    @Param('orig') origin: string,
+    @Param('dest') destination: string,
+  ): Promise<Flight[]> {
+    return this.flightsService.query(origin, destination);
+  }
 }

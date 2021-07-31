@@ -18,4 +18,8 @@ export class FlightsService {
   findOne(id: number): Promise<Flight> {
     return this.flightsRepository.findOne(id);
   }
+
+  query(origin: string, destination: string): Promise<Flight[]> {
+    return this.flightsRepository.find({ origin, destination });
+  }
 }
