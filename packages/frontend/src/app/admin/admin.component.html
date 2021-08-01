@@ -11,6 +11,8 @@
           <th class="table__cell">Depart</th>
           <th class="table__cell">Arrive</th>
           <th class="table__cell">Nonstop</th>
+          <th class="table__cell">Update?</th>
+          <th class="table__cell">Delete?</th>
         </tr>
       </thead>
 
@@ -22,6 +24,12 @@
           <td class="table__cell">{{ flight.depart }}</td>
           <td class="table__cell">{{ flight.arrive }}</td>
           <td class="table__cell">{{ flight.nonstop }}</td>
+          <td class="table__cell">
+            <button class="table__button" type="button">Update</button>
+          </td>
+          <td class="table__cell">
+            <button class="table__button" type="button">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
