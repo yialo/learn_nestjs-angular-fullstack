@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.flightsService.getAllFlights().subscribe((data: TFlight[]) => {
-      this.origins = data.map((flight) => flight.origin);
-      this.destinations = data.map((flight) => flight.destination);
+      this.origins = [...new Set([...data.map((flight) => flight.origin)])];
+      this.destinations = [...new Set([...data.map((flight) => flight.destination)])];
     });
   }
 

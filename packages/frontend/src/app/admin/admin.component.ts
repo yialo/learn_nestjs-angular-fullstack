@@ -17,22 +17,13 @@ export class AdminComponent {
       value: { origin, destination, flight_number, depart, arrive, nonstop },
     } = form;
 
-    // const flight: TFlight = {
-    //   origin,
-    //   destination,
-    //   flight_number,
-    //   depart,
-    //   arrive,
-    //   nonstop,
-    // };
-
     const flight: TFlight = {
-      origin: 'Atlanta',
-      destination: 'Chicago',
-      flight_number: 300,
-      depart: '2020-08-10 16:00:00.00Z',
-      arrive: '2020-08-10 17:30:00.00Z',
-      nonstop: true,
+      origin,
+      destination,
+      flight_number,
+      depart,
+      arrive,
+      nonstop,
     };
 
     console.log('send flight:', flight);

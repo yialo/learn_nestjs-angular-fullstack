@@ -35,10 +35,10 @@
             <div role="gridcell">{{ flight.origin }}</div>
             <div role="gridcell">{{ flight.destination }}</div>
             <div role="gridcell">
-              {{ flight.depart | date:'shortDate' }}
+              {{ flight.depart | date: 'full' }}
             </div>
             <div role="gridcell">
-              {{ flight.arrive | date:'shortDate' }}
+              {{ flight.arrive | date: 'long' }}
             </div>
             <div role="gridcell">{{ flight.nonstop }}</div>
           </div>
