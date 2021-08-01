@@ -1,3 +1,33 @@
-<form class="admin">
-  <p>Admin works!</p>
-</form>
+<div class="admin">
+  <form class="admin__form">
+    <p class="admin__tip">Add a Flight</p>
+
+    <input class="admin__field" type="text" aria-label="Specify origin" placeholder="Origin" ngModel
+      name="origin">
+
+    <input class="admin__field" type="text" aria-label="Specify destination"
+      placeholder="Destination" ngModel name="destination">
+
+    <input class="admin__field" type="number" aria-label="Specify flight number"
+      placeholder="Flight number" ngModel name="flight_number">
+
+    <label class="admin__label" aria-label="Specify depart">
+      Depart
+      <input class="admin__field" type="date" ngModel name="depart">
+    </label>
+
+    <label class="admin__label" aria-label="Specify depart">
+      Arrive
+      <input class="admin__field" type="date" ngModel name="arrive">
+    </label>
+
+    <label class="admin__checkbox" aria-label="Specify is nonstop or not">
+      <input class="admin__checkbox-field" type="checkbox" ngModel name="nonstop">
+      Nonstop
+    </label>
+
+    <button class="admin__button" type="submit">
+      Create
+    </button>
+  </form>
+</div>

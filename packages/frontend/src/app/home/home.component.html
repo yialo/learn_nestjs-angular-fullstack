@@ -4,12 +4,12 @@
 
     <div class="flights__inner">
       <form #form="ngForm" class="form flights__form" (ngSubmit)="query(form)" novalidate>
-        <select class="form__field" ngModel name="origin">
+        <select class="form__field" ngModel name="origin" aria-label="Choose origin">
           <option value="" disabled hidden selected>from</option>
           <option *ngFor="let city of cities">{{ city }}</option>
         </select>
 
-        <select class="form__field" ngModel name="destination">
+        <select class="form__field" ngModel name="destination" aria-label="Choose destination">
           <option value="" disabled hidden selected>to</option>
           <option *ngFor="let city of cities">{{ city }}</option>
         </select>

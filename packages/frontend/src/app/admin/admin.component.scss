@@ -1,0 +1,58 @@
+.admin {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+
+  &__form {
+    display: grid;
+    justify-items: start;
+    row-gap: 1rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem 1rem;
+    background-color: white;
+    box-shadow: 2px 4px 6px rgb(black, 0.5);
+  }
+
+  &__tip {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__field {
+    font-size: 1.25rem;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+  }
+
+  &__checkbox-field {
+    margin-right: 0.5rem;
+  }
+
+  &__button {
+    margin-top: 0.25rem;
+    border-style: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.25rem;
+    background-color: white;
+    box-shadow: 2px 4px 6px rgb(black, 0.5);
+
+    &:hover {
+      background-color: lightblue;
+    }
+
+    &:active {
+      background-color: lightgrey;
+    }
+  }
+}
