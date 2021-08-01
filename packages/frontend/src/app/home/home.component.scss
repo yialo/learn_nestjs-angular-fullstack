@@ -40,13 +40,11 @@
   }
 
   &__scroll-box {
-    display: flex;
     overflow: auto;
     background-color: white;
   }
 
   &__scroll-content {
-    flex-grow: 1;
     display: grid;
     padding: 0.5rem;
 
