@@ -1,17 +1,40 @@
 .admin {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   padding: 1rem;
 
-  &__form {
-    display: grid;
-    justify-items: start;
-    row-gap: 1rem;
-    border-radius: 0.5rem;
-    padding: 1.5rem 1rem;
-    background-color: white;
-    box-shadow: 2px 4px 6px rgb(black, 0.5);
+  &__table {
+    margin-bottom: 2rem;
   }
+}
+
+.table {
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 2px 4px 6px rgb(black, 0.5);
+
+  &__wrapper {
+    border-collapse: collapse;
+  }
+
+  &__caption {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  &__cell {
+    border: 1px solid black;
+    padding: 0.25rem;
+  }
+}
+
+.form {
+  display: grid;
+  justify-items: start;
+  row-gap: 1rem;
+  padding: 1.5rem 1rem;
+  background-color: white;
+  box-shadow: 2px 4px 6px rgb(black, 0.5);
 
   &__tip {
     margin-top: 0;

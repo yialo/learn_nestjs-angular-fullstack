@@ -41,12 +41,11 @@
 
   &__scroll-box {
     display: flex;
-    margin-bottom: 1rem;
     overflow: auto;
     background-color: white;
   }
 
-  &__grid {
+  &__scroll-content {
     flex-grow: 1;
     display: grid;
     padding: 0.5rem;

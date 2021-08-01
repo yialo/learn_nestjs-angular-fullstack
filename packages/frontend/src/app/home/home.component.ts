@@ -44,12 +44,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  showAll() {
-    this.flightsService.getAllFlights().subscribe((flights) => {
-      this.flights = flights;
-    });
-  }
-
   private getAllOrigins() {
     this.flightsService.getAllOrigins().subscribe((origins: Pick<TFlight, 'origin'>[]) => {
       this.origins = origins.map((item) => item.origin);

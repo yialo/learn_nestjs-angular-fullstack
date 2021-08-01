@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { TFlight } from '../flight.model';
@@ -9,8 +9,16 @@ import { FlightsService } from '../flights.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
   constructor(private readonly flightsService: FlightsService) {}
+
+  flights: TFlight[] = [];
+
+  ngOnInit() {
+    this.flightsService.getAllFlights().subscribe((flights) => {
+      this.flights = flights;
+    });
+  }
 
   sendFlight(form: NgForm) {
     const {
