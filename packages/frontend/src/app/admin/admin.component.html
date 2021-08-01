@@ -17,15 +17,24 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let flight of flights">
-          <td class="table__cell">{{ flight.flight_number }}</td>
-          <td class="table__cell">{{ flight.origin }}</td>
-          <td class="table__cell">{{ flight.destination }}</td>
+        <tr *ngFor="let flight of flights, let i = index">
+          <td class="table__cell">
+            <input class="table__field" type="text" [(ngModel)]="flight.flight_number">
+          </td>
+          <td class="table__cell">
+            <input class="table__field" type="text" [(ngModel)]="flight.origin">
+          </td>
+          <td class="table__cell">
+            <input class="table__field" type="text" [(ngModel)]="flight.destination">
+          </td>
           <td class="table__cell">{{ flight.depart }}</td>
           <td class="table__cell">{{ flight.arrive }}</td>
-          <td class="table__cell">{{ flight.nonstop }}</td>
           <td class="table__cell">
-            <button class="table__button table__button_update" type="button">Go</button>
+            <input class="table__checkbox" type="checkbox" [(ngModel)]="flight.nonstop">
+          </td>
+          <td class="table__cell">
+            <button class="table__button table__button_update" type="button"
+              (click)="updateFlight(flight)">Go</button>
           </td>
           <td class="table__cell">
             <button class="table__button table__button_delete" type="button">Go</button>
@@ -35,7 +44,8 @@
     </table>
   </div>
 
-  <form class="form admin__form" #form="ngForm" (ngSubmit)="sendFlight(form)" novalidate>
+  <form class="form admin__form" #creatorForm="ngForm" (ngSubmit)="createFlight(creatorForm)"
+    novalidate>
     <p class="form__tip">Add a Flight</p>
 
     <input class="form__field" type="text" aria-label="Specify origin" placeholder="Origin" ngModel

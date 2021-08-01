@@ -1,4 +1,5 @@
 export type TFlight = {
+  id: number;
   origin: string;
   destination: string;
   flight_number: number;

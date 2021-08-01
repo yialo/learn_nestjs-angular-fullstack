@@ -15,17 +15,21 @@ export class AdminComponent implements OnInit {
   flights: TFlight[] = [];
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.flightsService.getAllFlights().subscribe((flights) => {
       this.flights = flights;
     });
   }
 
-  sendFlight(form: NgForm) {
+  createFlight(form: NgForm) {
     const {
       value: { origin, destination, flight_number, depart, arrive, nonstop },
     } = form;
 
-    const flight: TFlight = {
+    const flight: Omit<TFlight, 'id'> = {
       origin,
       destination,
       flight_number,
@@ -37,5 +41,15 @@ export class AdminComponent implements OnInit {
     console.log('send flight:', flight);
 
     this.flightsService.postFlight(flight);
+  }
+
+  updateFlight(flight: TFlight) {
+    this.flightsService.updateFlight(flight).subscribe((data) => {
+      if (data?.affected) {
+        this.refresh();
+      } else {
+        console.log('Update failed');
+      }
+    });
   }
 }

@@ -16,7 +16,7 @@ export class FlightsService {
   }
 
   findAll(): Promise<Flight[]> {
-    return this.flightsRepository.find();
+    return this.flightsRepository.find({ order: { flight_number: 'ASC' } });
   }
 
   findOne(id: number): Promise<Flight> {
