@@ -45,4 +45,14 @@ export class FlightsController {
   query(@Param('orig') origin: string, @Param('dest') destination: string) {
     return this.flightsService.query(origin, destination);
   }
+
+  @Get('cities/origins')
+  getOrigins() {
+    return this.flightsService.findAllOrigins();
+  }
+
+  @Get('cities/destinations')
+  getDestinations() {
+    return this.flightsService.findAllDestinations();
+  }
 }

@@ -10,7 +10,7 @@ const API_ROOT = 'http://localhost:3200';
   providedIn: 'root',
 })
 export class FlightsService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   getFlightsByQuery(origin: string, destination: string): Observable<any> {
     return this.http.get(`${API_ROOT}/flights/query/${origin}/${destination}`);
@@ -27,4 +27,12 @@ export class FlightsService {
   }
 
   deleteFlight(id: number) {}
+
+  getAllOrigins(): Observable<any> {
+    return this.http.get(`${API_ROOT}/flights/cities/origins`);
+  }
+
+  getAllDestinations(): Observable<any> {
+    return this.http.get(`${API_ROOT}/flights/cities/destinations`);
+  }
 }

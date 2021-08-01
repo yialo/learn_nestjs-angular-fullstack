@@ -17,10 +17,8 @@ export class HomeComponent implements OnInit {
   constructor(private readonly flightsService: FlightsService) {}
 
   ngOnInit() {
-    this.flightsService.getAllFlights().subscribe((data: TFlight[]) => {
-      this.origins = [...new Set([...data.map((flight) => flight.origin)])];
-      this.destinations = [...new Set([...data.map((flight) => flight.destination)])];
-    });
+    this.getAllOrigins();
+    this.getAllDestinations();
   }
 
   query(form: NgForm) {
@@ -41,14 +39,28 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    this.flightsService.getFlightsByQuery(origin, destination).subscribe((data) => {
-      this.flights = data;
+    this.flightsService.getFlightsByQuery(origin, destination).subscribe((flights) => {
+      this.flights = flights;
     });
   }
 
   showAll() {
-    this.flightsService.getAllFlights().subscribe((data) => {
-      this.flights = data;
+    this.flightsService.getAllFlights().subscribe((flights) => {
+      this.flights = flights;
     });
+  }
+
+  private getAllOrigins() {
+    this.flightsService.getAllOrigins().subscribe((origins: Pick<TFlight, 'origin'>[]) => {
+      this.origins = origins.map((item) => item.origin);
+    });
+  }
+
+  private getAllDestinations() {
+    this.flightsService
+      .getAllDestinations()
+      .subscribe((destinations: Pick<TFlight, 'destination'>[]) => {
+        this.destinations = destinations.map((item) => item.destination);
+      });
   }
 }

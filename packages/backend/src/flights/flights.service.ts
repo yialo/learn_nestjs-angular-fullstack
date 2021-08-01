@@ -34,4 +34,14 @@ export class FlightsService {
   query(origin: string, destination: string): Promise<Flight[]> {
     return this.flightsRepository.find({ origin, destination });
   }
+
+  findAllOrigins() {
+    return this.flightsRepository.query('SELECT DISTINCT origin FROM flights');
+  }
+
+  findAllDestinations() {
+    return this.flightsRepository.query(
+      'SELECT DISTINCT destination FROM flights',
+    );
+  }
 }
