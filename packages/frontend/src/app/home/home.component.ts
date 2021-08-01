@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { TFlight } from '../flight.model';
@@ -9,20 +9,19 @@ import { FlightsService } from '../flights.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
-  cities = [
-    'Atlanta',
-    'Chicago',
-    'Denver',
-    'Jackson',
-    'London',
-    'Los Angeles',
-    'New York',
-    'Phoenix',
-  ];
+export class HomeComponent implements OnInit {
   flights: TFlight[] = [];
+  origins: string[] = [];
+  destinations: string[] = [];
 
-  constructor(private flightsService: FlightsService) {}
+  constructor(private readonly flightsService: FlightsService) {}
+
+  ngOnInit() {
+    this.flightsService.getAllFlights().subscribe((data: TFlight[]) => {
+      this.origins = data.map((flight) => flight.origin);
+      this.destinations = data.map((flight) => flight.destination);
+    });
+  }
 
   query(form: NgForm) {
     const { origin, destination } = form.value;
@@ -31,7 +30,13 @@ export class HomeComponent {
       return;
     }
 
-    this.flightsService.getFlights(origin, destination).subscribe((data) => {
+    this.flightsService.getFlightsByQuery(origin, destination).subscribe((data) => {
+      this.flights = data;
+    });
+  }
+
+  showAll() {
+    this.flightsService.getAllFlights().subscribe((data) => {
       this.flights = data;
     });
   }

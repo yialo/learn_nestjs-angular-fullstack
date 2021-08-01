@@ -12,11 +12,19 @@ const API_ROOT = 'http://localhost:3200';
 export class FlightsService {
   constructor(private http: HttpClient) {}
 
-  getFlights(origin: string, destination: string): Observable<any> {
+  getFlightsByQuery(origin: string, destination: string): Observable<any> {
     return this.http.get(`${API_ROOT}/flights/query/${origin}/${destination}`);
   }
 
-  postFlight(flight: TFlight) {}
+  getAllFlights(): Observable<any> {
+    return this.http.get(`${API_ROOT}/flights/`);
+  }
+
+  postFlight(flight: TFlight) {
+    this.http.post(`${API_ROOT}/flights/`, flight).subscribe((data) => {
+      console.log(`Data posted to server: ${data}`);
+    });
+  }
 
   deleteFlight(id: number) {}
 }

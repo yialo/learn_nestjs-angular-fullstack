@@ -1,5 +1,5 @@
 <div class="admin">
-  <form class="admin__form">
+  <form class="admin__form" #form="ngForm" (ngSubmit)="sendFlight(form)" novalidate>
     <p class="admin__tip">Add a Flight</p>
 
     <input class="admin__field" type="text" aria-label="Specify origin" placeholder="Origin" ngModel
@@ -13,12 +13,12 @@
 
     <label class="admin__label" aria-label="Specify depart">
       Depart
-      <input class="admin__field" type="date" ngModel name="depart">
+      <input class="admin__field" type="datetime-local" ngModel name="depart">
     </label>
 
     <label class="admin__label" aria-label="Specify depart">
       Arrive
-      <input class="admin__field" type="date" ngModel name="arrive">
+      <input class="admin__field" type="datetime-local" ngModel name="arrive">
     </label>
 
     <label class="admin__checkbox" aria-label="Specify is nonstop or not">
