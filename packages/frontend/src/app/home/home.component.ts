@@ -26,7 +26,18 @@ export class HomeComponent implements OnInit {
   query(form: NgForm) {
     const { origin, destination } = form.value;
 
+    if (!origin) {
+      console.log('No origin selected');
+      return;
+    }
+
+    if (!destination) {
+      console.log('No destination selected');
+      return;
+    }
+
     if (origin === destination) {
+      console.log('Origin and destination should be different');
       return;
     }
 
