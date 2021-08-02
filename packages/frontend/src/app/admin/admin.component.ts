@@ -38,9 +38,9 @@ export class AdminComponent implements OnInit {
       nonstop,
     };
 
-    console.log('send flight:', flight);
-
-    this.flightsService.postFlight(flight);
+    this.flightsService.postFlight(flight).subscribe(() => {
+      this.refresh();
+    });
   }
 
   updateFlight(flight: TFlight) {
@@ -49,6 +49,22 @@ export class AdminComponent implements OnInit {
         this.refresh();
       } else {
         console.log('Update failed');
+      }
+    });
+  }
+
+  deleteFlight(id: number) {
+    const needUpdate = window.confirm('Delete flight?');
+
+    if (!needUpdate) {
+      return;
+    }
+
+    return this.flightsService.deleteFlight(id).subscribe((data) => {
+      if (data?.affected) {
+        this.refresh();
+      } else {
+        console.log('Deletion failed');
       }
     });
   }

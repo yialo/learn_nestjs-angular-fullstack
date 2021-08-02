@@ -21,13 +21,9 @@ export class FlightsService {
     return this.http.get(ENTRYPOINT);
   }
 
-  postFlight(flight: Omit<TFlight, 'id'>) {
-    this.http.post(ENTRYPOINT, flight).subscribe((data) => {
-      console.log(`Data posted to server: ${data}`);
-    });
+  postFlight(flight: Omit<TFlight, 'id'>): Observable<any> {
+    return this.http.post(ENTRYPOINT, flight);
   }
-
-  deleteFlight(id: number) {}
 
   getAllOrigins(): Observable<any> {
     return this.http.get(`${ENTRYPOINT}cities/origins`);
@@ -38,6 +34,10 @@ export class FlightsService {
   }
 
   updateFlight(flight: TFlight): Observable<any> {
-    return this.http.post(`${ENTRYPOINT}${flight.id}/update`, flight);
+    return this.http.put(`${ENTRYPOINT}${flight.id}/update`, flight);
+  }
+
+  deleteFlight(id: number): Observable<any> {
+    return this.http.delete(`${ENTRYPOINT}${id}/delete`);
   }
 }

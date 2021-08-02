@@ -37,7 +37,8 @@
               (click)="updateFlight(flight)">Go</button>
           </td>
           <td class="table__cell">
-            <button class="table__button table__button_delete" type="button">Go</button>
+            <button class="table__button table__button_delete" type="button"
+              (click)="deleteFlight(flight.id)">Go</button>
           </td>
         </tr>
       </tbody>

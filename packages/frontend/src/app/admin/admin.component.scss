@@ -35,16 +35,25 @@
 
   &__button {
     display: block;
+    width: 100%;
     border: 1px solid #000;
     padding: 0.25rem 0.75rem;
-    width: 100%;
+    cursor: pointer;
 
     &_update {
       background-color: yellow;
+
+      &:hover {
+        background-color: lightgoldenrodyellow;
+      }
     }
 
     &_delete {
       background-color: red;
+
+      &:hover {
+        background-color: lightcoral;
+      }
     }
   }
 }
