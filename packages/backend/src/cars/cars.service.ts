@@ -17,11 +17,11 @@ export class CarsService {
     return 'This action adds a new car';
   }
 
-  async findAll(): Promise<Car[]> {
+  findAll() {
     return this.carsRepository.find();
   }
 
-  async findOne(id: number): Promise<Car> {
+  findOne(id: number) {
     return this.carsRepository.findOne(id);
   }
 

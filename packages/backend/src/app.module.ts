@@ -5,10 +5,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Car } from './cars/entities/car.entity';
 import { CarsModule } from './cars/cars.module';
+import { Flight } from './flights/entities/flight.entity';
+import { FlightsModule } from './flights/flights.module';
 
 @Module({
   imports: [
-    CarsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -16,9 +17,11 @@ import { CarsModule } from './cars/cars.module';
       username: 'postgres',
       password: 'guest123',
       database: 'transportation',
-      entities: [Car],
+      entities: [Car, Flight],
       synchronize: true,
     }),
+    CarsModule,
+    FlightsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
